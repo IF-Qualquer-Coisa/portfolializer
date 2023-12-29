@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all .3s;
+            color: inherit;
+        }
+
+        .logo {
+            border-radius: .3rem;
+        }
+
+        #offcanvas-open, #offcanvas-close {
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: #fff;
+            aspect-ratio: 1;
+            cursor: pointer;
+            font-size: 1.6rem;
+        }
+
+        .main__header {
+            background-color: #111;;
+            color: #fff;
+
+            height: 10vh;
+        }
+
+        .main__header .container {
+            width: 100%;
+            max-width: 1080px;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+
+        .main__header nav a {
+            margin-inline: .3rem;
+        }
+
+        .mobile__only {
+            display: none;
+            align-items: center;
+            padding: 1rem;
+            height: 100%;
+            gap: 0.3rem;
+        }
+
+        #offcanvas-open {
+            margin-right: 1rem;
+        }
+
+        @media (max-width:768px) {
+            .mobile__only {
+                display: flex;   
+            }
+
+            .main__header .container {
+                display: none;
+            }
+        }
+
+        #offcanvas {
+            background-color: #111;
+            color: #fff;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+            height: 100vh;
+            width: 80vw;
+
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        #offcanvas.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        #offcanvas .container {
+            display: flex;
+            flex-direction: column;
+            
+            height: 100%;
+        }
+
+        #offcanvas .offcanvas__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            height: 10vh;
+        }
+
+        #offcanvas nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #offcanvas nav a {
+            padding: 1rem;
+        }
+
+        #offcanvas nav a:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main__header">
+        <div class="mobile__only">
+            <button type="button" id="offcanvas-open"><i class="fa-solid fa-bars"></i></button>
+
+            <img src="./logo.png" class="logo" alt="" width="48" height="48">
+            <span>Portfolialyzer</span>
+        </div>
+        
+        <div class="container">
+            <img src="./logo.png" class="logo" alt="" width="48" height="48">
+    
+            <nav>   
+                <a href="#">Apresentação</a>
+                <a href="#">Hard Skills</a>
+                <a href="#">Soft Skills</a>
+                <a href="#">Projetos</a>
+            </nav>    
+        </div>
+    </header>
+
+    <aside id="offcanvas">
+        <div class="container">
+            <div class="offcanvas__header">
+                <img src="./logo.png" alt="" class="logo" width="48" height="48">
+                <button id="offcanvas-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <nav>   
+                <a href="#">Apresentação</a>
+                <a href="#">Hard Skills</a>
+                <a href="#">Soft Skills</a>
+                <a href="#">Projetos</a>
+            </nav>    
+        </div>
+    </aside>
+
+    <script>
+        const btnOffcanvasToggler = document.querySelector("#offcanvas-open");
+        const btnOffcanvasClose = document.querySelector("#offcanvas-close");
+        const offcanvas = document.querySelector("#offcanvas");
+
+        btnOffcanvasToggler.addEventListener("click", function() {
+            offcanvas.classList.add("active");
+        })
+
+        btnOffcanvasClose.addEventListener("click", function() {
+            offcanvas.classList.remove("active");
+        })
+    </script>
+</body>
+
+</html>
